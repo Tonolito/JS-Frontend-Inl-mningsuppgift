@@ -10,13 +10,11 @@ function DarkModeSwitch() {
     setIsDarkmode(false);
     document.documentElement.classList.remove("dark");
     localStorage.setItem("darkmode", "false");
-    console.log("Dark mode disable");
   }
   function enableDarkmode() {
     setIsDarkmode(true);
     document.documentElement.classList.add("dark");
     localStorage.setItem("darkmode", "true");
-    console.log("Dark mode enabled");
   }
 
   function clickDarkmode() {

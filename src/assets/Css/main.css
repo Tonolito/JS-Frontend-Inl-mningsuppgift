@@ -302,7 +302,7 @@ input:checked + .slider:before {
     rgba(241, 244, 253, 0.06944444444444442) 83%
   );
   padding-bottom: 2rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   @media (min-width: 768px) {
     padding-bottom: 0;
   }
@@ -1103,102 +1103,303 @@ footer {
 
 #contact {
   background-color: var(--clr-gray-100);
+  padding-top: 2.5rem;
+  padding-bottom: 6rem;
+
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+
+    grid-template-areas:
+      "headline headline"
+      "contact contact"
+      " form form";
+  }
+  .headline-contact {
+    font-size: var(--font-heading-2);
+    font-weight: 800;
+    grid-area: headline;
+    place-self: center;
   }
   .contact-left-content {
+    grid-area: contact;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 
     .explore {
-      display: flex;
-      flex-direction: row;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .headline-contact {
-      margin-top: 2rem;
-      margin-bottom: 4.5rem;
-      font-size: var(--font-heading-1);
+      display: none;
     }
 
     .contact-card {
-      display: grid;
-      grid-template-columns: 1fr 6fr;
-      gap: 0.5rem;
-      grid-template-areas:
-        "Logo headline"
-        "Logo content";
-
-      margin-bottom: 2rem;
-
-      .btn-circle {
-        width: 4rem;
-        height: 4rem;
-      }
-      .card-logo {
-        background-color: white;
-        grid-area: Logo;
-      }
-
-      .card-headline {
-        grid-area: headline;
-        font-size: var(--font-heading-4);
-      }
-      .card-text {
-        grid-area: content;
-      }
-      .arrow-text {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-
-        color: var(--clr-primary);
-        p {
-          color: var(--clr-primary);
-        }
-      }
+      display: none;
+    }
+    .btn-container {
+      margin: 2rem;
     }
   }
   .contact-right-content {
-    padding-top: 2rem;
+    grid-area: form;
+    display: flex;
+    justify-content: center;
 
     .form-card {
-      padding: 4.5rem;
       background-color: var(--clr-white);
-      box-shadow: black 1px 1px 5px;
+      box-shadow: rgba(0, 0, 0, 0.123) 1px 1px 20px;
+      border-radius: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      padding: 3rem;
+      gap: 1rem;
     }
     .form-headline {
-      margin-bottom: 2.5rem;
-      font-size: var(--font-heading-2);
+      place-self: center;
+      font-size: var(--font-heading-4);
+      font-weight: 700;
     }
 
     .input-group {
       display: flex;
       flex-direction: column;
-      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      font-size: var(--font-body-M);
+      font-weight: 600;
     }
     .form-input {
-      font-size: 1rem;
-      padding: 0.5rem;
+      padding: 1rem 0;
+      padding-left: 0.5rem;
+      border-radius: var(--br);
+      border: 1px solid var(--clr-gray-400);
+      font-size: var(--font-body-M);
+    }
+    .form-button {
+      border: none;
+      box-shadow: var(--clr-primary) 1px 1px 10px;
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "cards form";
+      gap: 2rem;
+    }
+    .headline-contact {
+      display: none;
+    }
+    .contact-left-content {
+      grid-area: cards;
+      .contact-card {
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+        gap: 1.5rem;
+        grid-template-areas:
+          "Logo headline"
+          "Logo content";
+
+        .btn-circle {
+          width: 4rem;
+          height: 4rem;
+        }
+        .card-logo {
+          background-color: white;
+          grid-area: Logo;
+        }
+        .card-content {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .card-headline {
+          grid-area: headline;
+          font-size: var(--font-heading-4);
+          font-weight: 800;
+        }
+        .card-text {
+          grid-area: content;
+          font-size: var(--font-body-M);
+        }
+        .arrow-text {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          color: var(--clr-primary);
+          p {
+            color: var(--clr-primary);
+            font-size: var(--font-body-M);
+          }
+        }
+      }
+      .btn-container {
+        display: none;
+      }
+    }
+    .contact-right-content {
+      grid-area: form;
+
+      place-self: center;
+      position: relative;
+
+      .form-card {
+        padding: 4.5rem;
+        background-color: var(--clr-white);
+        box-shadow: black 1px 1px 5px;
+        border-radius: 0.8rem;
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        z-index: 10;
+        top: -13rem;
+      }
+      .form-headline {
+        margin-bottom: 2.5rem;
+        font-size: var(--font-heading-2);
+        font-weight: 800;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1.5rem;
+        align-items: start;
+        gap: 0.5rem;
+      }
+      .form-label {
+        font-size: var(--font-body-M);
+        font-weight: 600;
+      }
+      .form-input {
+        font-size: 1rem;
+        padding: 1rem;
+        border-radius: var(--br);
+        border: 1px solid var(--clr-gray-400);
+      }
+      .form-button {
+        margin-top: 3rem;
+      }
+    }
+
+    /* .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "cards form";
+    }
+    .btn-container {
+      display: none;
+    }
+ 
+    .headline-contact {
+      display: none;
+    }
+    .contact-right-content {
+      grid-area: form;
+      padding-top: 2rem;
+      place-self: center;
+      position: relative;
+
+      .form-card {
+        padding: 4.5rem;
+        background-color: var(--clr-white);
+        box-shadow: black 1px 1px 5px;
+        border-radius: 0.8rem;
+        display: none;
+        flex-direction: column;
+
+        min-width: 636px;
+        min-height: 718px;
+
+        position: absolute;
+        z-index: 10;
+        right: -25em;
+        top: -12rem;
+      }
+      .form-headline {
+        margin-bottom: 2.5rem;
+        font-size: var(--font-heading-2);
+        font-weight: 800;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1.5rem;
+      }
+      .form-label {
+        font-size: var(--font-body-M);
+        font-weight: 600;
+      }
+      .form-input {
+        font-size: 1rem;
+        padding: 1rem;
+        border-radius: var(--br);
+        border: 1px solid var(--clr-gray-400);
+      }
+      .form-button {
+        margin-top: 9rem;
+      }
+    } */
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10rem;
+    }
+    .contact-left-content {
+      grid-area: contact;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      grid-area: cards;
+      .explore {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        align-items: center;
+        p {
+          font-size: var(--font-body-S);
+        }
+      }
+
+      .contact-card {
+      }
+    }
+    .contact-right-content {
+      grid-area: form;
+
+      .form-input {
+        width: 30em;
+      }
     }
   }
 }
-
 #contact-information {
-  padding-top: 6rem;
-  .container {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-  }
+  padding-top: 5rem;
   .left-image {
+    display: none;
+    img {
+      border-radius: 8px;
+    }
   }
   .right-locations {
     display: flex;
     flex-direction: column;
+    align-items: center;
+
     gap: 3rem;
+    .locations-headline {
+      font-size: var(--font-heading-2);
+      font-weight: 800;
+
+      place-self: center;
+    }
     .location-card {
       display: flex;
       flex-direction: column;
@@ -1206,19 +1407,21 @@ footer {
       .headline-location {
         font-size: var(--font-heading-4);
         margin-bottom: 1.5rem;
+        place-self: center;
       }
       .address-location {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
         margin-bottom: 0.75rem;
+        max-width: 355px;
       }
       .phone-number-location {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
         margin-bottom: 0.75rem;
       }
 
@@ -1226,13 +1429,63 @@ footer {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
       }
     }
     .social-bar {
       display: flex;
       flex-direction: row;
       gap: 1rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas: "locations map";
+    }
+    .left-image {
+      display: block;
+      grid-area: map;
+      width: 400px;
+
+      img {
+        padding-left: 3rem;
+        padding-top: 15rem;
+        width: 100%;
+        object-fit: contain;
+        border-radius: var(--br);
+      }
+    }
+  }
+  @media (min-width: 1400px) {
+    .container {
+      display: grid;
+      grid-template-areas: "map locations";
+      gap: 8.25rem;
+      margin-top: 13rem;
+    }
+    .left-image {
+      display: block;
+      grid-area: map;
+      width: auto;
+
+      img {
+        padding: 0;
+        display: block;
+      }
+    }
+    .right-locations {
+      grid-area: locations;
+
+      .locations-headline {
+        display: none;
+      }
+      .location-card {
+        .headline-location {
+          place-self: auto;
+        }
+      }
     }
   }
 }
@@ -1287,7 +1540,8 @@ footer {
     display: none;
   }
   .navbar {
-    display: block;
+    display: flex;
+    gap: 1rem;
   }
   #signin {
     display: block;

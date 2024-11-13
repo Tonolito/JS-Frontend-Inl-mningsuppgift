@@ -2,13 +2,15 @@ import React from "react";
 import LogoLight from "../../assets/images/Silicon logo.svg";
 import LogoDark from "../../assets/images/Silicon logo darkMode.svg";
 import DarkModeSwitch from "../DarkModeSwitch";
+import HamburgerMenu from "../HamburgerMenu";
+import { Link, NavLink } from "react-router-dom";
 function Header() {
   return (
     <header>
       {/* <!-- Container --> */}
       <div className="container">
         {/* <!-- Logo --> */}
-        <a id="logo" href="index.html">
+        <Link id="logo" to="/">
           <img
             className="lightMode-logo"
             src={LogoLight}
@@ -19,12 +21,15 @@ function Header() {
             src={LogoDark}
             alt="Silicon Logotype"
           />
-        </a>
+        </Link>
         {/* <!-- Navbar --> */}
         <nav id="main-menu" className="navbar">
-          <a className="nav-link" href="#">
+          <NavLink className="nav-link" to="/#features">
             Features
-          </a>
+          </NavLink>
+          <NavLink className="nav-link" to="/contact">
+            Contact
+          </NavLink>
         </nav>
         <DarkModeSwitch />
         {/* <!-- Sign in/ Up  --> */}
@@ -32,6 +37,7 @@ function Header() {
           <i className="fa-thin fa-user"></i>
           <span>Sign in / Up</span>
         </a>
+        <HamburgerMenu />
       </div>
     </header>
   );
