@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from "./StarRating";
 
 function ReviewItem({ item }) {
   return (
@@ -12,7 +13,7 @@ function ReviewItem({ item }) {
         }}
       ></i>
       <div className="card-content">
-        <img className="rating-image" src={item.starRating} alt="" />
+        <StarRating starRating={item.starRating} />
         <p>{item.comment}</p>
         <div className="profile-bar">
           <img src={item.avatarUrl} alt="" />

@@ -1,22 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Rating from "../../assets/images/Review/rating.svg";
-import Avatar1 from "../../assets/images/Review/avatar-1.svg";
-import Avatar2 from "../../assets/images/Review/avatar-2.svg";
-
+import React, { useContext } from "react";
+import { ItemsContext } from "../../Contexts/Contexts";
 import ReviewItem from "../ReviewItem";
 function Reviews() {
-  const [reviewItems, setReviewItems] = useState([]);
+  const {reviewItems} = useContext(ItemsContext);
 
-  async function getReviewData() {
-    const fetchData = await fetch(
-      "https://win24-assignment.azurewebsites.net/api/testimonials"
-    );
-    setReviewItems(await fetchData.json());
-  }
-
-  useEffect(() => {
-    getReviewData();
-  }, []);
   return (
     <section id="review">
       <div className="container">

@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useContext } from "react";
+import { ItemsContext } from "../Contexts/Contexts"; 
 import AccordionItem from "./AccordionItem";
 
 function Accordion() {
-  const [AccordionItems, setAccordionItems] = useState([]);
+  const { AccordionItems } = useContext(ItemsContext); 
 
-  async function getAccordionData() {
-    const fetchData = await fetch(
-      "https://win24-assignment.azurewebsites.net/api/faq"
-    );
-    setAccordionItems(await fetchData.json());
-  }
-
-  useEffect(() => {
-    getAccordionData();
-  }, []);
+  
 
   return (
     <div className="questions">

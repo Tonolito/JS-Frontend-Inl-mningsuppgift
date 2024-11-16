@@ -5,20 +5,23 @@ import Home from "./views/Home";
 import Contact from "./views/Contact";
 import Header from "./components/Sections/Header";
 import Footer from "./components/Sections/Footer";
+import ItemProvider from "./Contexts/Contexts";
 function App() {
   return (
-    <BrowserRouter>
-      <div className="wrapper">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <ItemProvider>
+      <BrowserRouter>
+        <div className="wrapper">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </ItemProvider>
   );
 }
 

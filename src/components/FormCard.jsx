@@ -37,8 +37,8 @@ const FormCard = () => {
       newErrors.email = "Must be a valid email address";
     }
 
-    if (!/^[A-Öa-ö\s\-]{1,}$/.test(formData.fullName)) {
-      newErrors.email = "Must be atleast 1 char";
+    if (!/^[A-Öa-ö\s\-]{1,}$/.test(formData.specialist)) {
+      newErrors.specialist = "Must be atleast 1 char";
     }
 
     setErrors(newErrors);
